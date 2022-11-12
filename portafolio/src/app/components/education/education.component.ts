@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetDataService } from 'src/app/services/get-data.service';
 
 @Component({
   selector: 'app-education',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
-
-  constructor() { }
+  rta:any;
+  constructor(private Data:GetDataService) { }
 
   ngOnInit(): void {
+    this.Data.getData().subscribe(data=> this.rta=data);
   }
 
 }

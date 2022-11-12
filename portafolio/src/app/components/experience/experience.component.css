@@ -3,6 +3,12 @@
     color: azure;
   }
 
+  .main__exp-logo{
+    width: 250px;
+    height: 80px;
+    
+    }
+
   @media screen and (max-width:575px) {
     
     .main__exp-logo{

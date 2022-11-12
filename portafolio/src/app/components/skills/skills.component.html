@@ -2,22 +2,23 @@
     <div class="col-10 d-flex flex-column mx-auto">
       <h2 class="ps-5 pt-4 mb-2 container-fluid">hard & soft skills</h2>
       <div class="main__bar row">
-         <div class="main__skill col-6 col-md-4 col-sm-4  text-center">
+         
+        <div *ngFor="let skill of rta.skills" class="main__skill col-6 col-md-4 col-sm-4  text-center">
              <div class="circle-wrap mx-auto mt-5">
                <div class="circle">
-                 <div class="mask full-1">
-                   <div class="fill-1"></div>
+                 <div class="mask full-1" [style.background-color]="skill.color">
+                   <div  class="fill-1" [style.background-color]="skill.color"></div>
                  </div>
                  <div class="mask half">
-                   <div class="fill-1"></div>
+                   <div class="fill-1" [style.background-color]="skill.color"></div>
                  </div>
-                 <div class="inside-circle"> 80% </div>
-               </div>
+                 <div class="inside-circle"> {{skill.percentage}}% </div>
+               </div >
              </div>
-             <h5 class="mt-2">Html</h5>
+             <h5 class="mt-2">{{skill.nameSkills}}</h5>
            </div>
 
-           <div class="main__skill col-6 col-md-4 col-sm-4 text-center">
+           <!-- <div class="main__skill col-6 col-md-4 col-sm-4 text-center">
                <div class="circle-wrap mx-auto mt-5">
                    <div class="circle">
                      <div class="mask full-2">
@@ -136,7 +137,7 @@
                     </div>
                   </div>
                   <h5 class="mt-2">Comunicacion efectiva</h5>
-                </div>
+                </div> -->
 
             </div>
 
