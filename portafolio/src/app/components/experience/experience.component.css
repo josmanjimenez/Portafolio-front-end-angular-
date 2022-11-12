@@ -1,0 +1,14 @@
+.main__experience, .main__skills {
+    background-color: #212529;
+    color: azure;
+  }
+
+  @media screen and (max-width:575px) {
+    
+    .main__exp-logo{
+    width: 230px;
+    height: 100px;
+    
+    }
+  }
+  

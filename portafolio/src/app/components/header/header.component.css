@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+.header{
+    
+    border-radius: 0 0 25px 25px;
+    box-shadow: black 0px 0px 20px 1px ;
+}
+
+.header__logo{
+    width: 150px;
+    height: auto;
+}
+.header__socialmedia{
+    line-height: 38px;
+    
+}
+.header__socialmedia span{
+vertical-align: middle;
+}
+.icon{
+    font-size: 28px;
+}
+
+.carousel{
+    
+    width: 100%;
+}
+
+.carousel-img{
+    width: 100%;
+    height: 60vh;
+    object-fit:cover;
+  
+    
+
+} 
+.header__about{
+    
+} 
+
+
+
+
+.main__img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.header__logo1{
+ width: 100px;   
+ height: 100px;
+}
+.header__logo2{
+width: 120px;
+height: 100px;
+}
+
+hr{
+ height: 15px;
+}
