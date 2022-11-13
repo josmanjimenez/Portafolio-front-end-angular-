@@ -2,6 +2,14 @@
     background-color: #212529;
     color: azure;
   }
+  span{
+    position: absolute;
+    right:0;
+    top: 15px;
+}
+.relative{
+  position: relative;
+}
 
   .main__exp-logo{
     width: 250px;

@@ -3,3 +3,12 @@
     height: 300px; */
     box-shadow: 20px 20px 30px black;
   }
+
+  .relative{
+    position: relative;
+}
+
+span{
+    position: absolute;
+    right:0;
+}

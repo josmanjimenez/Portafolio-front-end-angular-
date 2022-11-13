@@ -1,16 +1,22 @@
-<section class="main__Projects pb-5">
-    <div class="col-10 d-flex flex-column mx-auto">
+<section class="main__Projects pb-5 py-4">
+    <div class="col-10 d-flex flex-column mx-auto relative">
+      <span class="icon-pencil"></span>
       <h2 class="ps-5 pt-4 ">Proyectos</h2>
-      <div class="main__Proyect my-5 ms-5  row" *ngFor="let proyect of rta.proyects">
-          <h3 class="ps-3">{{proyect.name}}</h3>
-          <p class="ps-3 col-10">{{proyect.description}}</p>
-          <figure class="row">
-            <img [src]="proyect.image" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
-          </figure >
-          <div class="d-flex justify-content-center">
-            <a href="#" target="_blank" type="button" class="btn btn-dark col-2 mt-4 ms-4">visitar</a>
-          </div>            </div>
-     
+      <div class="relative py-4"  *ngFor="let proyect of rta.proyects">
+        <span class="icon-pencil"></span>
+        <div class="main__Proyect my-1 ms-5  row">
+            <h3 class="ps-3">{{proyect.name}}</h3>
+            <p class="ps-3 col-10">{{proyect.description}}</p>
+            <figure class="row">
+              <img [src]="proyect.image" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
+            </figure >
+            <div class="d-flex justify-content-center">
+              <a href="#" target="_blank" type="button" class="btn btn-dark col-2 mt-4 ms-4">visitar</a>
+            </div>            
+          </div>
+       
+  
+      </div>
 
-    </div>
+      </div>
   </section>

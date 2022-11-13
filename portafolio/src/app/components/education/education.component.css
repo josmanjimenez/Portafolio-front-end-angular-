@@ -1,3 +1,12 @@
+span{
+  position: absolute;
+  right:0;
+  top: 15px;
+}
+.relative{
+  position: relative;
+}
+
 .main__education li{
   list-style: none;
 }

@@ -1,24 +1,18 @@
-<section class="main__experience ">
-    <div class="col-10 d-flex flex-column mx-auto">
+<section class="main__experience py-4">
+    <div class="col-10 d-flex flex-column mx-auto relative">
+      <span class="icon-pencil"></span>
       <h2 class="ps-5 pt-4 mb-5 ">Experiencia</h2>
-         
-      <div class="main__exp row align-items-center justify-content-evenly  " >
-            <img [src]="rta.experience[0].imageCompany" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
-            <div class="col-12 col-sm-7 col-lg-7 col-xl-7">
-                    <h4 >{{rta.experience[0].position}}</h4>
-                <p>{{rta.experience[0].description}} </p>
-             </div>
+    <div class="relative mb-4" *ngFor="let experience of rta.experiences">
+        <span class="icon-pencil"></span>
+        <div class="main__exp row align-items-center justify-content-evenly  " >
+              <img [src]="experience.imageCompany" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
+              <div class="col-12 col-sm-7 col-lg-7 col-xl-7">
+                      <h4 >{{experience.position}}</h4>
+                  <p>{{experience.description}} </p>
+               </div>
+          
+           </div>
+    </div>
         
-         </div>
-         <div class="main__exp row align-items-center justify-content-evenly mt-5 mb-5 " >
-            <img [src]="rta.experience[1].imageCompany" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3 " >
-           
-            <div class="col-12 col-sm-7 col-lg-7 col-xl-7">
-                <h4 >{{rta.experience[1].position}}</h4>
-                <p>{{rta.experience[1].description}}  </p>
-             </div>
-        </div>
-
-
   </div>
  </section>

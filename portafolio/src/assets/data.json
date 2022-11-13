@@ -13,7 +13,7 @@
     "about":"Soy un chico de 25 años estudiate de programacion y desarollo de sotfware, apasionado con aprender cada dia mas y motivado a asumir nuevos proyectos que formen parte de esta revolucion tecnologica que se ha venido gestando en los ultimos tiempos. Actualmente estoy en la busqueda de mi primer empleo en esta industria, para asi poder implementar todos los conocimientos y habilidades adquiridos hasta ahora y continuar asi con mi formacion profesional, formando parte de un equipo de trabajo que proporcionen ideas y soluciones que ayuden e impulsen a esta indistria en crecimiento.",
     "ubication":"Buenos Aires(Argentina)",
     "imageAbout":["../assets/img/carabobo.jpg","../assets/img/platzi.png"],
-    "experience":[
+    "experiences":[
         {
             "company":"Mercado",
             "position":"Repositor",

@@ -1,19 +1,22 @@
-<section class="main__education">
+<section class="main__education py-1">
     
-  <ul class="col-10 d-flex flex-column mx-auto"> 
-
+  <ul class="col-10 d-flex flex-column mx-auto relative"> 
+      <span class="icon-pencil"></span>
       <h2 class="ps-5 pt-4 mb-5">Educaciòn</h2>
-      <li *ngFor="let educ of rta.education">
-        <div class="main__education-history row align-items-center justify-content-evenly pb-4">
-            <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
-            <div class="col-7">
-                <h3>{{educ.carrer}}</h3>
-                <p>{{educ.description}}
-                </p>
-  
-            </div>
-         </div>
-        
-      </li> 
+      <div class="relative" *ngFor="let educ of rta.education">
+        <span class="icon-pencil"></span>
+        <li>
+          <div class="main__education-history row align-items-center justify-content-evenly pb-4">
+              <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
+              <div class="col-7">
+                  <h3>{{educ.carrer}}</h3>
+                  <p>{{educ.description}}
+                  </p>
+    
+              </div>
+           </div>
+          
+        </li> 
+      </div>
       </ul>
   </section>

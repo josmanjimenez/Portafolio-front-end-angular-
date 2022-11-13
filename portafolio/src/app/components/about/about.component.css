@@ -1,0 +1,8 @@
+.main__description{
+    position: relative;
+}
+
+span{
+    position: absolute;
+    right:0;
+}

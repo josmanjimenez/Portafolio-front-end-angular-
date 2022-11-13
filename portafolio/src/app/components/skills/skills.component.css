@@ -3,6 +3,15 @@
   color: azure;
 }
 
+.relative{
+  position: relative;
+}
+
+span{
+  position: absolute;
+  right:0;
+}
+
   
   /* progress bar */
   
