@@ -1,10 +1,9 @@
 <section class="main__education py-1">
     
-  <ul class="col-10 d-flex flex-column mx-auto relative"> 
-      <span class="icon-pencil"></span>
+  <ul *ngIf="status ==false" class="col-10 d-flex flex-column mx-auto relative"> 
+      <span class="icon-pencil" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 mb-5">Educaciòn</h2>
       <div class="relative" *ngFor="let educ of rta.education">
-        <span class="icon-pencil"></span>
         <li>
           <div class="main__education-history row align-items-center justify-content-evenly pb-4">
               <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
@@ -19,4 +18,60 @@
         </li> 
       </div>
       </ul>
+
+
+
+    <!-- /////////////// editable active ///////// -->
+
+    <ul *ngIf="status && status2== false && status3==false" class="col-10 d-flex flex-column mx-auto relative"> 
+      <span class="icon-pencil" (click)="editable(1)"></span>
+      <h2 class="ps-5 pt-4 mb-5">Educaciòn</h2>
+      <div class="relative" *ngFor="let educ of rta.education">
+        <span class="icon-bin trash"  (click)="deleteItem(1)"></span>
+        <span class="icon-pencil" (click)="editable2(2)"></span>
+        <li>
+          <div class="main__education-history row align-items-center justify-content-evenly pb-4">
+              <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
+              <div class="col-7">
+                  <h3>{{educ.carrer}}</h3>
+                  <p>{{educ.description}}
+                  </p>
+    
+              </div>
+           </div>
+          
+        </li> 
+      </div>
+      <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="editable3(3)" >añadir</button>
+      </ul>
+
+      
+
+        <!-- ///////////// add education ////////////// -->
+  <div *ngIf="status2 && status3== false" class="col-10 mx-auto relative">
+    <span class="icon-pencil" (click)="editable2(2)"></span>
+    <label for="image" class="d-block mb-1">Sube una imagen </label>
+    <input type="file" class="d-block mb-3" id="image">
+    <label for="title" class="d-block mb-1">titulo obtenido </label>
+    <input type="text" class="d-block mb-3" id="title">
+    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
+    <textarea class="d-block" id="text" [value]="" ></textarea>
+    <button class="btn btn-dark mt-3 d-flex mx-auto">actualizar</button>
+    
+  </div>
+
+  <!-- //////////// update education ///////////// -->
+  <div *ngIf="status3" class="col-10 mx-auto relative">
+    <span class="icon-pencil" (click)="editable3(3)"></span>
+    <label for="image" class="d-block mb-1">Sube una imagen </label>
+    <input type="file" class="d-block mb-3" id="image">
+    <label for="title" class="d-block mb-1">titulo obtenido </label>
+    <input type="text" class="d-block mb-3" id="title">
+    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
+    <textarea class="d-block" id="text" [value]="" ></textarea>
+    <button class="btn btn-dark mt-3 d-flex mx-auto">enviar</button>
+    
+  </div>
+      
+
   </section>

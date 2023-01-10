@@ -1,8 +1,26 @@
-.main__description{
+.main__description , .main__editable{
     position: relative;
+    text-align: justify;
 }
 
-span{
+.pencil{
     position: absolute;
-    right:0;
+    right:0; 
 }
+
+
+.pencil:hover{
+    background-color:rgba(0, 0,0, 0.3);
+    border-radius:100%;
+}
+
+
+textarea{
+   width: 100%;
+   height: 30vh;
+   overflow-y: hidden;
+   margin: auto;
+   display: block;
+   resize: none;
+}
+

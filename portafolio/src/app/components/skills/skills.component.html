@@ -1,10 +1,11 @@
 <section class="main__skills  container-fluid pb-4 py-4">
-    <div class="col-10 d-flex flex-column mx-auto relative">
-      <span class="icon-pencil"></span>
+    <div *ngIf="status ==false" class="col-10 d-flex flex-column mx-auto relative">
+      <span class="icon-pencil pencil1" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 mb-2 container-fluid">hard & soft skills</h2>
       <div class="main__bar row">
          
         <div *ngFor="let skill of rta.skills" class="main__skill col-6 col-md-4 col-sm-4  text-center">
+         
              <div class="circle-wrap mx-auto mt-5">
                <div class="circle">
                  <div class="mask full-1" [style.background-color]="skill.color">
@@ -22,6 +23,58 @@
          
             </div>
 
-    </div>
+    </div>   
+
+
+       <!-- /////////////// editable active ///////// -->
+       <div *ngIf="status && status2== false && status3==false" class="col-10 d-flex flex-column mx-auto relative">
+        <span class="icon-pencil pencil1"  (click)="editable(1)"></span>
+        <h2 class="ps-5 pt-4 mb-2 container-fluid">hard & soft skills</h2>
+        <div class="main__bar row">
+           
+          <div *ngFor="let skill of rta.skills" class="main__skill col-6 col-md-4 col-sm-4  text-center">
+            <span class="icon-bin trash"  (click)="deleteItem(1)"></span>
+            <span class="icon-pencil pencil2" (click)="editable2(2)"></span>
+               <div class="circle-wrap mx-auto mt-5">
+                 <div class="circle">
+                   <div class="mask full-1" [style.background-color]="skill.color">
+                     <div  class="fill-1" [style.background-color]="skill.color"></div>
+                   </div>
+                   <div class="mask half">
+                     <div class="fill-1" [style.background-color]="skill.color"></div>
+                   </div>
+                   <div class="inside-circle"> {{skill.percentage}}% </div>
+                 </div >
+               </div>
+               <h5 class="mt-2">{{skill.nameSkills}}</h5>
+             </div>
+  
+           
+              </div>
+              <button class="btn btn-light mt-3 d-flex mx-auto" (click)="editable3(3)">añadir</button>
+      </div>   
+
+           <!-- ///////////// add skill ////////////// -->
+  <div *ngIf="status2 && status3== false" class="col-10 mx-auto relative">
+    <span class="icon-pencil" (click)="editable2(2)"></span>
+    <label for="title" class="d-block mb-1">habilidad </label>
+    <input type="text" class="d-block mb-3" id="title">
+    <label for="dominio" class="d-block mb-1">grado de dominio </label>
+    <input type="number" class="d-block mb-3" id="dominio">
+    <button class="btn btn-light mt-3 d-flex mx-auto" (click)="editable3(3)">enviar</button>
+  </div>
+
+
+
+ <!-- //////////// update experience ///////////// -->
+
+  <div  *ngIf="status3" class="col-10 mx-auto relative">
+    <span class="icon-pencil" (click)="editable3(3)"></span>
+    <label for="title" class="d-block mb-1">habilidad </label>
+    <input type="text" class="d-block mb-3" id="title">
+    <label for="dominio" class="d-block mb-1">grado de dominio </label>
+    <input type="number" class="d-block mb-3" id="dominio">
+    <button class="btn btn-light mt-3 d-flex mx-auto" (click)="editable3(3)">actualizar</button>
+  </div>
         
   </section>

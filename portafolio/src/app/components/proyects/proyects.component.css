@@ -1,3 +1,7 @@
+.main__Projects{
+text-align: justify;
+}
+
 .main__proyect-img{
     /* width: 500px;
     height: 300px; */
@@ -11,4 +15,24 @@
 span{
     position: absolute;
     right:0;
+}
+span:hover{
+  background-color:rgba(0, 0,0, 0.3);
+  border-radius:100%;
+}
+.trash{
+  right: 20px;
+}
+.trash:hover{
+  color: red;
+  background-color: white;
+} 
+
+textarea{
+  width: 100%;
+  height: 30vh;
+  overflow-y: hidden;
+  margin: auto;
+  display: block;
+  resize: none;
 }

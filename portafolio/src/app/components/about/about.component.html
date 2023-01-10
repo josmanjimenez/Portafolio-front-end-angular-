@@ -1,7 +1,15 @@
 <section class="main__about ">
-    <div class="main__description col-10 mx-auto pb-1 my-4 " >
-      <span class="icon-pencil"></span>
-      <h2 class="ps-5  ">Acerca de</h2>
-      <p class="ps-4 ">{{rta.about}} </p>
+   
+  <div *ngIf="status == false" class="main__description col-10 mx-auto pb-1 my-4 " >
+      <span (click)="editable()" class="icon-pencil pencil"></span>
+      <h2 class="ps-5" >Acerca de</h2>
+      <p class="ps-4">{{rta.about}} </p>
+  </div>
+  
+  <div  class="main__editable col-10 mx-auto pb-1 my-4" > 
+    <span *ngIf="status" (click)="editable()" class="icon-pencil mb-5 pencil" ></span>
+    <label *ngIf="status" for="body" class="d-blokc mb-1">texto</label>
+    <textarea  *ngIf="status"  [value]="input" id="body"></textarea>
+    <button *ngIf="status" class="btn btn-dark mt-3 d-flex mx-auto" >Enviar</button>
   </div>
   </section>
