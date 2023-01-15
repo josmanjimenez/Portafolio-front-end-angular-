@@ -2,12 +2,15 @@
     <div *ngIf="status ==false" class="col-10 d-flex flex-column mx-auto relative">
       <span class="icon-pencil" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 mb-5 ">Experiencia</h2>
-    <div class="relative mb-4" *ngFor="let experience of rta.experiences">
+    <div class="relative mb-4" *ngFor="let experience of rta2">
         <div class="main__exp row align-items-center justify-content-evenly  " >
-              <img [src]="experience.imageCompany" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
+              <img [src]="experience.image_logo" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
               <div class="col-12 col-sm-7 col-lg-7 col-xl-7">
-                      <h4 >{{experience.position}}</h4>
-                  <p>{{experience.description}} </p>
+                      <h4 >Empresa: {{experience.company_name}}</h4>
+                      <p><b>Posicion: {{experience.position}}</b></p>
+                      <p><b>Desde: {{ experience.start_date_experience |date: 'd/L/yy'}}</b></p>
+                      <p><b>Hasta: {{experience.ending_date_experience |date: 'd/L/yy'}}</b></p>
+                  <p><b>Descripcion: {{experience.description_experience}}</b> </p>
                </div>
           
            </div>
@@ -19,45 +22,74 @@
   <div *ngIf="status && status2== false && status3==false" class="col-10 d-flex flex-column mx-auto relative">
     <span class="icon-pencil"  (click)="editable(1)"></span>
     <h2 class="ps-5 pt-4 mb-5 ">Experiencia</h2>
-  <div class="relative mb-4" *ngFor="let experience of rta.experiences">
-    <span class="icon-bin trash"  (click)="deleteItem(1)"></span>
-      <span class="icon-pencil" (click)="editable2(2)"></span>
+  <div class="relative mb-4" *ngFor="let experience of rta2">
+    <span class="icon-bin trash"  (click)="deleteItem(experience.id_experience)"></span>
+      <span class="icon-pencil" (click)="editable2(experience.id_experience)"></span>
       <div class="main__exp row align-items-center justify-content-evenly  " >
-            <img [src]="experience.imageCompany" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
+            <img [src]="experience.image_logo" alt="logo" class="main__exp-logo col-12 col-sm-3 col-md-3 col-lg-2 mb-3" >
             <div class="col-12 col-sm-7 col-lg-7 col-xl-7">
-                    <h4 >{{experience.position}}</h4>
-                <p>{{experience.description}} </p>
+              <h4 >Empresa: {{experience.company_name}}</h4>
+              <p><b>Posicion: {{experience.position}}</b></p>
+              <p><b>Desde: {{ experience.start_date_experience |date: 'd/L/yy'}}</b></p>
+              <p><b>Hasta: {{experience.ending_date_experience |date: 'd/L/yy'}}</b></p>
+          <p><b>descripcion: {{experience.description_experience}}</b> </p>
              </div>
         
          </div>
   </div>
 
-  <button class="btn btn-light mt-3 d-flex mx-auto" (click)="editable3(3)">añadir</button>
+  <button class="btn btn-light mt-3 d-flex mx-auto" (click)="editable3(id)" >añadir</button>
 </div>
 
-  <!-- ///////////// add experience ////////////// -->
+  <!-- ///////////// update experience ////////////// -->
   <div *ngIf="status2 && status3== false" class="col-10 mx-auto relative">
-    <span class="icon-pencil" (click)="editable2(2)"></span>
-    <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
+    <span class="icon-pencil" (click)="editable2(id)"></span>
+
+    <label for="image" class="d-block mb-1">link de la  imagen </label>
+    <input type="text" class="d-block mb-3 form-control col-6" id="image" placeholder="Link de la  imagen" [(ngModel)]="imag">
+
     <label for="title" class="d-block mb-1">puesto </label>
-    <input type="text" class="d-block mb-3" id="title">
-    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <button class="btn btn-light mt-3 d-flex mx-auto">actualizar</button>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Puesto" [(ngModel)]="position">
+
+    <label for="company_name" class="d-block mb-1">nombre de empresa </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="company_name" placeholder="Empresa" [(ngModel)]="comp_name">
+
+    <label for="start_date" class="d-block mb-1">fecha de inicio </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="start_date"  placeholder="Desde" [(ngModel)]="start" >
+
+    <label for="ending_date" class="d-block mb-1">fecha de de culminacion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="ending_date"  placeholder="Hasta" [(ngModel)]="end">
+
+    <label for="text" class="d-block mb-1 ">descripcion del la experiencia </label>
+    <textarea class="d-block  form-control" id="text"  placeholder="Descripcion" [(ngModel)]="desc" ></textarea>
+
+    <button class="btn btn-light mt-3 d-flex mx-auto" (click)="updateDta(id,dataExp)">actualizar</button>
     
   </div>
 
-  <!-- //////////// update experience ///////////// -->
-  <div *ngIf="status3" class="col-10 mx-auto relative">
+  <!-- //////////// add experience ///////////// -->
+  <div id="add" *ngIf="status3" class="col-10 mx-auto relative">
     <span class="icon-pencil" (click)="editable3(3)"></span>
-    <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
-    <label for="title" class="d-block mb-1">titulo puesto </label>
-    <input type="text" class="d-block mb-3" id="title">
-    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <button class="btn btn-light mt-3 d-flex mx-auto">enviar</button>
+    <label for="image" class="d-block mb-1">Link de la  imagen </label>
+    <input type="text" class="d-block mb-3 form-control col-6" id="image" placeholder="Link de la  imagen" [(ngModel)]="imag">
+
+    <label for="title" class="d-block mb-1">Titulo puesto </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Puesto" [(ngModel)]="position">
+
+    <label for="company_name" class="d-block mb-1">Nombre de empresa </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="company_name"  placeholder="Empresa"  [(ngModel)]="comp_name">
+
+    <label for="start_date" class="d-block mb-1">Fecha de inicio </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="start_date" placeholder="Desde"  [(ngModel)]="start">
+
+    <label for="ending_date" class="d-block mb-1">Fecha de de culminacion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="ending_date"  placeholder="Hasta" [(ngModel)]="end">
+
+    <label for="text" class="d-block mb-1">Descripcion del la experiencia </label>
+    <textarea class="d-block form-control " id="text"  placeholder="Descripcion" [(ngModel)]="desc" ></textarea>
+  
+    <button  class="btn btn-light mt-3 d-flex mx-auto" (click)="createDta(dataExp)"  >Enviar</button>
+   
     
   </div>
       

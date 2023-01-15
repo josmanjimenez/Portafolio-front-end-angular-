@@ -3,12 +3,12 @@
 <!--           
       "
         //argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1662441043/APLogo-20-20.png" -->
-        <img src="../assets/img/Arg-pro.png"  alt="argpprod" class="header__logo ms-sm-5">
+        <a href="https://www.argentina.gob.ar/economia/conocimiento/argentina-programa" target="_blank" rel="noopener noreferrer"><img src="https://desa.argentinaprograma.inti.gob.ar/pluginfile.php/1/theme_moove/logo/1660276176/APLogo-20-20.png"  alt="argpprod" class="header__logo ms-sm-5"></a>
 
         <div class="header__socialmedia me-lg-5 me-2" >
-            <span class="icon icon-linkedin mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2" ></span>
-            <span class="icon icon-facebook2 mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2"></span>
-            <span class="icon icon-instagram mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2"></span>
+           <a href="https://www.linkedin.com/" target="_blank"><span class="icon icon-linkedin mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2" ></span></a> 
+           <a href="https://es-la.facebook.com/"target="_blank"><span class="icon icon-facebook2 mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2"></span></a> 
+           <a href="https://www.instagram.com/"target="_blank"><span class="icon icon-instagram mx-0 mx-sm-1 mx-md-2 mx-lg-2 mx-xl-2"></span></a> 
             <button type="button" class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">login</button>
         </div>
     
@@ -39,23 +39,60 @@
 
 
     <section class="header__about container-fluid mb-3 pb-5">
-        <div class="row  ">
+        <div *ngIf="status==false" class="row  ">
             <div class="main__photo col-12 col-sm-5 d-flex flex-column justify-content-evenly ">
-              <img src="../assets/img/IMG_20220627_221849.jpg" alt="" class="main__img mx-auto mt-5">
-              <h2 class=" text-center">{{rta.name}}</h2>
-              <h3 class="text-center">{{rta.position}}</h3>
+              <img [src]="rta2[0].image_user"  alt="" class="main__img mx-auto mt-5">
+              <h2 class=" text-center">{{rta2[0].name_user +" "+ rta2[0].lastName_user}}</h2>
+              <h3 class="text-center">{{rta2[0].trade_profession}}</h3>
            </div>
 
             <div class="main__description text-center col-12 col-sm-7  ps-sm-5 pt-1 mt-3 " >
-              <img [src]="rta.imageAbout[0]" alt="logo" class="header__logo1">
-              <img [src]="rta.imageAbout[1]"alt="logo" class="header__logo2">
-              <p class="m-0">{{rta.ubication}}</p>
-              <a href="#" class="d-block">informacion de contacto</a>
+              <span class="icon-pencil pencil" (click)="editable(1)"></span>
+              <!-- [src] para que fucione las imagens del la data  -->
+              <img [src]="img_1" alt="logo" class="header__logo1">
+              <img *ngIf="img_2" [src]="img_2"alt="logo" class="header__logo2">
+              <p class="m-0">{{rta3.city +","+"(" +rta3.contry+")"}}</p>
+              <p class="mb-1">Email: {{rta2[0].email}}</p>
+              <p class="mb-1">Numero de telefono: {{rta2[0].phone_number}}</p>
               <button class="btn btn-dark mx-1 mt-3">Tengo interes en</button>
-              <button class="btn btn-dark mx-1 mt-3">A;adir seccion</button>
+              <button class="btn btn-dark mx-1 mt-3">Añadir seccion</button>
               <button class="btn btn-dark mx-1 mt-3">Mas...</button>
             </div>
 
        </div>
+       
+       <!-- ///////////////////////editable active /////////////////////// -->
+
+
+       <div *ngIf="status" class="col-10 mx-auto mt-5 relative">
+        <span class="icon-pencil d-flex justify-content-end" (click)="editable(1)"></span>
+        <label for="imagePerfil" class="d-block mb-1">Sube una imagen de perfil </label>
+        <input type="text" class="d-block mb-3 form-control col-6" placeholder="Link de la imagen" id="imagePerfil" [(ngModel)]="img_user">
+
+        <label for="name" class="d-block mb-1">Nombre </label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="name"placeholder="Nombre" [(ngModel)]="name">
+
+        <label for="name" class="d-block mb-1">Apellido </label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="name"placeholder="Apellido" [(ngModel)]="last_name">
+
+        <label for="position" class="d-block mb-1">Ocupacion </label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="position"placeholder="Puesto" [(ngModel)]="trade">
+
+        <label for="email" class="d-block mb-1">Correo electronico </label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="email"placeholder="Email" [(ngModel)]="email">
+
+        <label for="phone" class="d-block mb-1">Numero telefonico </label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="phone"placeholder="Numero telefocico" [(ngModel)]="number">
+
+        <label for="phone" class="d-block mb-1">Ciudad</label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="phone"placeholder="Ciudad" [(ngModel)]="city">
+
+        <label for="phone" class="d-block mb-1">Pais</label>
+        <input type="text" class="d-block mb-3  form-control col-4" id="phone"placeholder="Pais" [(ngModel)]="contry">
+
+     
+        <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="updateData()">ActUalizar</button>
+        
+      </div>
       </section>
     </header>

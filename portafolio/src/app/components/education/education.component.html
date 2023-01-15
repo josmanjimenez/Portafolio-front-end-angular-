@@ -3,14 +3,17 @@
   <ul *ngIf="status ==false" class="col-10 d-flex flex-column mx-auto relative"> 
       <span class="icon-pencil" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 mb-5">Educaciòn</h2>
-      <div class="relative" *ngFor="let educ of rta.education">
+      <div class="relative" *ngFor="let educ of rta2">
         <li>
           <div class="main__education-history row align-items-center justify-content-evenly pb-4">
-              <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
+              <img [src]="educ.image_education" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
               <div class="col-7">
-                  <h3>{{educ.carrer}}</h3>
-                  <p>{{educ.description}}
-                  </p>
+                  <h3>{{educ.institution}}</h3>
+                  <p><b>Carrera o titulo: {{educ.title}}</b></p>
+                  <p><b>Desde: {{educ. start_date_education |date:"d/L/yy"}}</b>
+                  <p><b>Hasta: {{educ.ending_date_education |date :"d/L/yy"}}</b>
+                  <p><b>Estudios culminados: {{educ.finish |booleans}}</b></p>
+               
     
               </div>
            </div>
@@ -26,16 +29,18 @@
     <ul *ngIf="status && status2== false && status3==false" class="col-10 d-flex flex-column mx-auto relative"> 
       <span class="icon-pencil" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 mb-5">Educaciòn</h2>
-      <div class="relative" *ngFor="let educ of rta.education">
-        <span class="icon-bin trash"  (click)="deleteItem(1)"></span>
-        <span class="icon-pencil" (click)="editable2(2)"></span>
+      <div class="relative" *ngFor="let educ of rta2">
+        <span class="icon-bin trash"  (click)="deleteItem(educ.id_education)"></span>
+        <span class="icon-pencil" (click)="editable2(educ.id_education)"></span>
         <li>
           <div class="main__education-history row align-items-center justify-content-evenly pb-4">
-              <img [src]="educ.image" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
+              <img [src]="educ.image_education" alt="" [style.background-color]='educ.imageBack ? "black" : "none" ' class="main__educ-logo main__educ-logo-1  col-5 col-sm-3 col-md-2 col-lg-2 ">
               <div class="col-7">
-                  <h3>{{educ.carrer}}</h3>
-                  <p>{{educ.description}}
-                  </p>
+                <h3>{{educ.institution}}</h3>
+                <p><b>Carrera o titulo: {{educ.title}}</b></p>
+                <p><b>Desde: {{educ. start_date_education |date:"d/L/yy"}}</b>
+                <p><b>Hasta: {{educ.ending_date_education |date :"d/L/yy"}}</b>
+                <p><b>Estudios culminados: {{educ.finish|booleans}}</b></p>
     
               </div>
            </div>
@@ -47,29 +52,54 @@
 
       
 
-        <!-- ///////////// add education ////////////// -->
-  <div *ngIf="status2 && status3== false" class="col-10 mx-auto relative">
+        <!-- ///////////// Update education ////////////// -->
+  <div *ngIf="status2 && status3== false" class="col-10 mx-auto mt-5 relative">
     <span class="icon-pencil" (click)="editable2(2)"></span>
+   
     <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
-    <label for="title" class="d-block mb-1">titulo obtenido </label>
-    <input type="text" class="d-block mb-3" id="title">
-    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <button class="btn btn-dark mt-3 d-flex mx-auto">actualizar</button>
+    <input type="text" class="d-block mb-3 form-control col-6" id="image" placeholder="Link de la imagen" [(ngModel)]="image_education">
+
+    <label for="title" class="d-block mb-1">Institucion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Carrera o Titulo" [(ngModel)]="institution">
+
+    <label for="title" class="d-block mb-1">Carrera o Titulo </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Carrera o Titulo" [(ngModel)]="title">
+
+    <label for="start_date" class="d-block mb-1">Fecha de inicio </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="start_date"placeholder="AAAA-MM-DD"  [(ngModel)]="start_date_education">
+
+    <label for="ending_date" class="d-block mb-1">Fecha de de culminacion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="ending_date"placeholder="AAAA-MM-DD"  [(ngModel)]="ending_date_education">
+    
+    <label for="?" class="d-block mb-1">Culminado? </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="?" placeholder="true o false" [(ngModel)]="finish">
+
+
+    <button class="btn btn-dark mt-3 d-flex mx-auto " (click)=" updateDta(id,dataEdu)">actualizar</button>
     
   </div>
 
-  <!-- //////////// update education ///////////// -->
-  <div *ngIf="status3" class="col-10 mx-auto relative">
+  <!-- //////////// add education ///////////// -->
+  <div *ngIf="status3" class="col-10 mx-auto  mt-5  relative">
     <span class="icon-pencil" (click)="editable3(3)"></span>
     <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
-    <label for="title" class="d-block mb-1">titulo obtenido </label>
-    <input type="text" class="d-block mb-3" id="title">
-    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <button class="btn btn-dark mt-3 d-flex mx-auto">enviar</button>
+    <input type="text" class="d-block mb-3 form-control col-6" id="image" placeholder="Link de la imagen" [(ngModel)]="image_education">
+
+    <label for="title" class="d-block mb-1">Institucion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Carrera o Titulo" [(ngModel)]="institution">
+
+    <label for="title" class="d-block mb-1">Carrera o Titulo </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="title" placeholder="Carrera o Titulo" [(ngModel)]="title">
+
+    <label for="start_date" class="d-block mb-1">Fecha de inicio </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="start_date"placeholder="AAAA-MM-DD"  [(ngModel)]="start_date_education">
+
+    <label for="ending_date" class="d-block mb-1">Fecha de de culminacion </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="ending_date"placeholder="AAAA-MM-DD"  [(ngModel)]="ending_date_education">
+    
+    <label for="?" class="d-block mb-1">Culminado? </label>
+    <input type="text" class="d-block mb-3 form-control col-4" id="?" placeholder="true o false" [(ngModel)]="finish">
+    <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="createDta(dataEdu)">enviar</button>
     
   </div>
       

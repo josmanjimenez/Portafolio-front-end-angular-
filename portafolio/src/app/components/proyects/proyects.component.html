@@ -2,15 +2,15 @@
     <div *ngIf="status==false" class="col-10 d-flex flex-column mx-auto relative">
       <span class="icon-pencil" (click)="editable(1)"></span>
       <h2 class="ps-5 pt-4 ">Proyectos</h2>
-      <div class="relative py-4"  *ngFor="let proyect of rta.proyects">
+      <div class="relative py-4"  *ngFor="let project of rta2">
         <div class="main__Proyect my-1 ms-5  row">
-            <h3 class="ps-3">{{proyect.name}}</h3>
-            <p class="ps-3 col-10">{{proyect.description}}</p>
+            <h3 class="ps-3">{{project.name_project}}</h3>
+            <p class="ps-3 col-10">{{project.description_project}}</p>
             <figure class="row">
-              <img [src]="proyect.image" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
+              <img [src]="project.image_project" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
             </figure >
             <div class="d-flex justify-content-center">
-              <a href="#" target="_blank" type="button" class="btn btn-dark col-2 mt-4 ms-4">visitar</a>
+              <a href="#project.url.project" target="_blank" type="button" class="btn btn-dark col-2 mt-4 ms-4">visitar</a>
             </div>            
           </div>
        
@@ -26,46 +26,58 @@
       <div *ngIf="status && status2== false && status3==false" class="col-10 d-flex flex-column mx-auto relative">
         <span class="icon-pencil" (click)="editable(1)"></span>
         <h2 class="ps-5 pt-4 ">Proyectos</h2>
-        <div class="relative py-4"  *ngFor="let proyect of rta.proyects">
-          <span class="icon-bin trash"  (click)="deleteItem(1)"></span>
-          <span class="icon-pencil" (click)="editable2(2)"></span>
+        <div class="relative py-4"  *ngFor="let project of rta2">
+          <span class="icon-bin trash"  (click)="deleteItem(project.id_project)"></span>
+          <span class="icon-pencil" (click)="editable2(project.id_project)"></span>
           <div class="main__Proyect my-1 ms-5  row">
-              <h3 class="ps-3">{{proyect.name}}</h3>
-              <p class="ps-3 col-10">{{proyect.description}}</p>
+              <h3 class="ps-3">{{project.name_project}}</h3>
+              <p class="ps-3 col-10">{{project.description_project}}</p>
               <figure class="row">
-                <img [src]="proyect.image" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
+                <img [src]="project.image_project" sizes="50vw" alt="Animation Hasbro" class="ps-3 mt-3 main__proyect-img">
               </figure >
                        
             </div>
          
     
         </div>
-        <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="editable3(3)" >añadir</button>
+        <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="editable3(id)" >añadir</button>
         </div>
 
-              <!-- ///////////// add experience ////////////// -->
-  <div *ngIf="status2 && status3== false" class="col-10 mx-auto relative">
-    <span class="icon-pencil" (click)="editable2(2)"></span>
+              <!-- ///////////// update project ////////////// -->
+   <div *ngIf="status2 && status3== false" class="col-10 mx-auto mt-5 relative">
+    <span class="icon-pencil" (click)="editable2(id)"></span>
     <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
-    <label for="title" class="d-block mb-1">nombre del proyecto </label>
-    <input type="text" class="d-block mb-3" id="title">
-    <label for="text" class="d-block mb-1">descripcion del proyecto </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <label for="url" class="d-block mb-1">url del procyecto </label>
-    <input type="text" class="d-block mb-3" id="url">
-    <button class="btn btn-dark mt-3 d-flex mx-auto">actualizar</button>
+    <input type="text" class="d-block mb-3 form-control col-6" placeholder="Link de la imagen" id="image"[(ngModel)]="image_project">
+
+    <label for="title" class="d-block mb-1">Nombre del proyecto </label>
+    <input type="text" class="d-block mb-3 form-control col-4" placeholder="Nombre" id="title"[(ngModel)]="name_project">
+
+    <label for="text" class="d-block mb-1">Descripcion del proyecto </label>
+    <textarea class="d-block form-control col-4"placeholder="Descripcion"  id="text" [(ngModel)]="description_project" ></textarea>
+
+    <label for="url" class="d-block mb-1">Url del procyecto </label>
+    <input type="text" class="d-block mb-3 form-control col-4" placeholder="Url" id="url"[(ngModel)]="url_project">
+
+    <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="updateDta(id,dataPro)">actualizar</button>
     
   </div>
 
-  <!-- //////////// update experience ///////////// -->
-  <div *ngIf="status3" class="col-10 mx-auto relative">
+  <!-- //////////// add project ///////////// -->
+  <div *ngIf="status3" class="col-10 mx-auto mt-5 relative">
     <span class="icon-pencil" (click)="editable3(3)"></span>
     <label for="image" class="d-block mb-1">Sube una imagen </label>
-    <input type="file" class="d-block mb-3" id="image">
-    <label for="text" class="d-block mb-1">descripcion del la experiencia </label>
-    <textarea class="d-block" id="text" [value]="" ></textarea>
-    <button class="btn btn-dark mt-3 d-flex mx-auto">enviar</button>
+    <input type="text" class="d-block mb-3 form-control col-6" placeholder="Link de la imagen" id="image"[(ngModel)]="image_project">
+
+    <label for="title" class="d-block mb-1">Nombre del proyecto </label>
+    <input type="text" class="d-block mb-3 form-control col-4" placeholder="Nombre" id="title"[(ngModel)]="name_project">
+
+    <label for="text" class="d-block mb-1">Descripcion del proyecto </label>
+    <textarea class="d-block form-control col-4"placeholder="Descripcion"  id="text" [(ngModel)]="description_project" ></textarea>
+
+    <label for="url" class="d-block mb-1">Url del procyecto </label>
+    <input type="text" class="d-block mb-3 form-control col-4" placeholder="Url" id="url"[(ngModel)]="url_project">
+
+    <button class="btn btn-dark mt-3 d-flex mx-auto" (click)="createDta(dataPro)">enviar</button>
     
   </div>
       
