@@ -39,9 +39,7 @@ export class SkillsComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.Data.getData().subscribe(data=>{
-      this.rta=data;
-    })
+    
     this.Data.getSkills().subscribe(data=>{
       this.rta2=data;
       

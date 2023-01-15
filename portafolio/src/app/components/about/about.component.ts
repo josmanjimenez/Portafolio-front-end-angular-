@@ -30,12 +30,7 @@ export class AboutComponent implements OnInit {
   constructor( private Data:GetDataService) { }
 
   ngOnInit(): void {
-    this.Data.getData().subscribe(data=> {
-      this.rta=data;
-      this.str=JSON.stringify(this.rta.about);
-      this.input=this.str.replace(/"/g,"");
-     
-    })
+   
     
       this.Data.getUser().subscribe(data=> {
       this.rta2=data;

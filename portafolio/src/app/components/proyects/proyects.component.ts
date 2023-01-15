@@ -33,9 +33,7 @@ export class ProyectsComponent implements OnInit {
  constructor(private Data:GetDataService) { }
 
   ngOnInit(): void {
-    this.Data.getData().subscribe(data=>{
-      this.rta=data;
-    })
+   
     this.Data.getProjects().subscribe(data=>{
       this.rta2=data;
     })
