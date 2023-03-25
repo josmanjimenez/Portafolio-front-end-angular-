@@ -187,6 +187,6 @@ getAddress(id:number):Observable<any>{
       'Content-Type': 'application/json'
     }})
 }
-
+//   "start": "ng serve --proxy-config proxy.conf.json"
 }
 
