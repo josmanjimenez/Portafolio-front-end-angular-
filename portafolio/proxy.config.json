@@ -1,0 +1,9 @@
+{
+    "/find/*": {
+      "target": "http://porfolio-yoprogramo-josmanjimenez.koyeb.app",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }
+  
